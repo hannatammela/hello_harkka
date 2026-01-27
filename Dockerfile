@@ -6,13 +6,13 @@
 
 
 #Buildvaihe (Java Development Kit, kääntäjä)
-FROM  eclipse-temurin:17-jdk AS BUILDER
+FROM  eclipse-temurin:17-jdk AS builder
 WORKDIR /app
 COPY . . 
 RUN ./mvnw clean package -DskipTests
 
 #Paketointivaihe
-FROM ecliplse-temurin:17-jre
+FROM eclipse-temurin:17-jre
 WORKDIR /app
 COPY --from=builder /app/target/*.jar app.jar
 EXPOSE 8080
