@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'spring-hello/**'
   workflow_dispatch:
 
 jobs:
@@ -36,8 +38,8 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
-          context: ./spring-hello/hello
-          file: ./spring-hello/hello/Dockerfile
+          context: ./spring-hello
+          file: ./spring-hello/Dockerfile
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
