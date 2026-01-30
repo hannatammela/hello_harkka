@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - main
-    paths:
-      - 'spring-hello/hello/**'
   workflow_dispatch:
 
 jobs:
